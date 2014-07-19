@@ -1,0 +1,4 @@
+name: reactivate
+description: A sample web application
+dependencies:
+  browser: any
