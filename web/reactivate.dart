@@ -13,6 +13,16 @@ void main() {
   JsObject boxAttributes = new JsObject.jsify({
     'className': 'commentBox'
   });
+  
+  // Pure CSS button
+  JsObject buttonAttributes = new JsObject.jsify({
+    'className': 'pure-button pure-button-primary'
+  });
+  JsObject buttonDescription = new JsObject.jsify({
+    'render': () => ReactDOM.callMethod('button', [buttonAttributes, 'Click Me'])
+  });
+  JsObject Button = React.callMethod('createClass', [buttonDescription]);
+  
   JsObject commentListDescription = new JsObject.jsify({
     'render': () => ReactDOM.callMethod('div', 
         [listAttributes, 'Hello, world! I am a comment list.'])
@@ -29,7 +39,8 @@ void main() {
         [boxAttributes, 
          ReactDOM.callMethod('h2', [{}, 'Comments']),
          new JsObject(CommentList, [null]),
-         new JsObject(CommentForm, [null])
+         new JsObject(CommentForm, [null]),
+         new JsObject(Button, [null])
          ])
   });
   JsObject CommentBox = React.callMethod('createClass', [commentBoxDescription]);
